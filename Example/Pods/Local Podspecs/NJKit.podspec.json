@@ -1,0 +1,22 @@
+{
+  "name": "NJKit",
+  "version": "0.1.0",
+  "summary": "A short description of NJKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/njhu/NJKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "njhu": "64hp@163.com"
+  },
+  "source": {
+    "git": "https://github.com/njhu/NJKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "NJKit/Classes/**/*"
+}
