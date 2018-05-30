@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NJKit
 
-class ViewController: UIViewController {
+class ViewController: NJTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

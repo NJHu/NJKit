@@ -1,8 +1,8 @@
 {
   "name": "NJKit",
-  "version": "0.1.0",
-  "summary": "A short description of NJKit.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "1.0.0",
+  "summary": "NJ 开发基本常用类",
+  "description": "开发工具, 控制器, UI, Network, Tools, Extensions",
   "homepage": "https://github.com/njhu/NJKit",
   "license": {
     "type": "MIT",
@@ -13,10 +13,62 @@
   },
   "source": {
     "git": "https://github.com/njhu/NJKit.git",
-    "tag": "0.1.0"
+    "tag": "1.0.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.3"
   },
-  "source_files": "NJKit/Classes/**/*"
+  "resource_bundles": {
+    "NJKit": [
+      "NJKit/*.bundle"
+    ]
+  },
+  "dependencies": {
+    "Masonry": [
+
+    ],
+    "SDWebImage": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Category",
+      "source_files": "NJKit/Classes/Category/*.{swift}"
+    },
+    {
+      "name": "Network",
+      "source_files": "NJKit/Classes/Network/*.{swift}",
+      "dependencies": {
+        "Alamofire": [
+
+        ]
+      }
+    },
+    {
+      "name": "View",
+      "source_files": "NJKit/Classes/View/*.{swift}",
+      "dependencies": {
+        "MJRefresh": [
+
+        ]
+      }
+    },
+    {
+      "name": "ViewController",
+      "source_files": "NJKit/Classes/ViewController/*.{swift}",
+      "dependencies": {
+        "MJRefresh": [
+
+        ],
+        "NJKit/View": [
+
+        ]
+      }
+    },
+    {
+      "name": "Xib",
+      "source_files": "NJKit/Xib/*.{xib}"
+    }
+  ]
 }
