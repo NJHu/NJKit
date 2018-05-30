@@ -10,14 +10,14 @@
 import UIKit
 import WebKit
 
-protocol NJWebViewControllerDelegate {
+public protocol NJWebViewControllerDelegate {
     func webViewBackBtnClick(_ webView: WKWebView, _ controller: NJWebViewController, _ btn: UIButton?) -> Void
     func webViewCloseBtnClick(_ webView: WKWebView, _ controller: NJWebViewController, _ btn: UIButton?) -> Void
     func webViewScrollViewContentSize(_ webView: WKWebView, _ controller: NJWebViewController, _ scrollView: UIScrollView, _ contentSize: CGSize) -> Void
 }
 
 
-class NJWebViewController: NJViewController {
+open class NJWebViewController: NJViewController {
     
     public var isNeedProgressLine: Bool = true
     public var isAutoChangeTitle: Bool = true
@@ -32,7 +32,7 @@ class NJWebViewController: NJViewController {
         }
     }
     
-    override func viewDidLoad() {
+   open override func viewDidLoad() {
         super.viewDidLoad()
         nj_interactivePopDisabled = true
         nj_isBackActionBtnHidden = true
@@ -50,7 +50,7 @@ class NJWebViewController: NJViewController {
             webView?.loadHTMLString(htmlStr, baseURL: nil)
         }
     }
-    override func viewDidLayoutSubviews() {
+   open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.bringSubview(toFront: progressView)
     }
@@ -118,7 +118,7 @@ extension NJWebViewController {
 }
 // MARK:- Observers
 extension NJWebViewController {
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         let wkWebView = object as? WKWebView
         let scrollView = object as? UIView
@@ -211,8 +211,8 @@ extension NJWebViewController: WKUIDelegate {
 // MARK:- btns
 extension NJWebViewController {
     private func addActions() {
-        backBtn.setImage(UIImage(named: "NJKit/navigationButtonReturn"), for: UIControlState.normal)
-        backBtn.setImage(UIImage(named: "NJKit/navigationButtonReturnClick"), for: UIControlState.highlighted)
+        backBtn.setImage(UIImage(named: "NJKit.bundle/navigationButtonReturn"), for: UIControlState.normal)
+        backBtn.setImage(UIImage(named: "NJKit.bundle/navigationButtonReturnClick"), for: UIControlState.highlighted)
         closeBtn.setTitle("关闭", for: UIControlState.normal)
         closeBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
         closeBtn.setTitleColor(UIColor.red, for: UIControlState.highlighted)

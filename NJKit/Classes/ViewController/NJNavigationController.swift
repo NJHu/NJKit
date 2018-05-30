@@ -8,25 +8,25 @@
 
 import UIKit
 
-class NJNavigationController: UINavigationController {
+open class NJNavigationController: UINavigationController {
     
-    override func viewDidLoad() {
+    open  override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isHidden = true
         view.backgroundColor = UIColor.groupTableViewBackground
         getSystemGestureOfBack()
     }
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+   open  override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if childViewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
         }
         super.pushViewController(viewController, animated: animated)
     }
-    override func viewWillLayoutSubviews() {
+   open  override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         navigationBar.isHidden = true
     }
-    override func viewDidLayoutSubviews() {
+   open  override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationBar.isHidden = true
     }
@@ -40,7 +40,7 @@ extension NJNavigationController: UIGestureRecognizerDelegate {
         panGes.delegate = self
         self.interactivePopGestureRecognizer?.isEnabled = false
     }
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if let vc = self.childViewControllers.last as? NJNavBarViewController {
             return (self.childViewControllers.count > 1 && !vc.nj_interactivePopDisabled)
         }else {

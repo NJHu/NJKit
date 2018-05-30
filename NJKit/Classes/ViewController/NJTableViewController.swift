@@ -8,21 +8,21 @@
 
 import UIKit
 
-class NJTableViewController: NJViewController {
+open class NJTableViewController: NJViewController {
     
-    @IBOutlet var tableView: UITableView!
+   @IBOutlet public var tableView: UITableView!
     private var style: UITableViewStyle = .plain
     
-    init(tableViewStyle: UITableViewStyle) {
+   public init(tableViewStyle: UITableViewStyle) {
         super.init(nibName: nil, bundle: nil)
         style = tableViewStyle;
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         if tableView == nil {
             addTableView()
@@ -59,14 +59,14 @@ extension NJTableViewController {
 }
 
 extension NJTableViewController: UITableViewDataSource, UITableViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollView.scrollIndicatorInsets = scrollView.contentInset
         view.endEditing(true)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell(style: .default, reuseIdentifier: "UITableViewCell")
     }
     

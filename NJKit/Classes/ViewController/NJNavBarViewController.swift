@@ -8,14 +8,14 @@
 
 import UIKit
 
-class NJNavBarViewController: UIViewController {
+open  class NJNavBarViewController: UIViewController {
     // 默认可以全局滑动返回
     public var nj_interactivePopDisabled = false
     // 是否需要隐藏返回按钮
     public var nj_isBackActionBtnHidden = false
     public let nj_navigationBar: NJNavigationBar = NJNavigationBar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44.0 + UIApplication.shared.statusBarFrame.size.height)))
     private let nj_backBtn: UIButton = UIButton(type: UIButtonType.custom)
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(nj_navigationBar)
         nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
@@ -23,11 +23,11 @@ class NJNavBarViewController: UIViewController {
         navigationItem.addObserver(self, forKeyPath: "title", options: NSKeyValueObservingOptions.new, context: nil)
         nj_addBackBtn()
     }
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nj_backBtn.isHidden = nj_isBackActionBtnHidden
     }
-    override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.bringSubview(toFront: nj_navigationBar)
     }
@@ -40,27 +40,27 @@ class NJNavBarViewController: UIViewController {
 // MARK:- StatusBar
 //        setNeedsStatusBarAppearanceUpdate()
 extension NJNavBarViewController {
-    override var prefersStatusBarHidden: Bool {
+   open  override var prefersStatusBarHidden: Bool {
         return false
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+   open  override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+   open  override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return UIStatusBarAnimation.slide
     }
 }
 
 // MARK:- title
 extension NJNavBarViewController {
-    override var title: String? {
+    open override var title: String? {
         didSet {
             if isViewLoaded {
                 nj_navigationBar.titleLabel.text = title
             }
         }
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+   open  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         let navigationItem = object as? UINavigationItem
         if keyPath! == "title" && (navigationItem != nil) && (navigationItem! == self.navigationItem) {
             nj_navigationBar.titleLabel.text = change?[NSKeyValueChangeKey.newKey] as? String
@@ -72,13 +72,19 @@ extension NJNavBarViewController {
 
 extension NJNavBarViewController {
     private func nj_addBackBtn() {
-        nj_backBtn.setImage(UIImage(named: "navigationButtonReturn"), for: UIControlState.normal)
-        nj_backBtn.setImage(UIImage(named: "navigationButtonReturnClick"), for: UIControlState.highlighted)
+       
+        let fileReturn = "NJKit.bundle/Contents/Resources/navigationButtonReturn"
+        let fileReturnClick = "NJKit.bundle/Contents/Resources/navigationButtonReturnClick"
+        let fileReturnPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturn)"
+        let fileReturnClickPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturnClick)"
+        
+        nj_backBtn.setImage(UIImage(contentsOfFile: fileReturnPath ), for: UIControlState.normal)
+        nj_backBtn.setImage(UIImage(contentsOfFile: fileReturnClickPath ), for: UIControlState.highlighted)
         nj_backBtn.frame = CGRect(x: 0, y: nj_navigationBar.frame.size.height - 44.0, width: 34.0, height: 44.0)
         nj_navigationBar.addSubview(nj_backBtn)
         nj_backBtn.addTarget(self, action: #selector(nj_backBtnClick(btn:)), for: UIControlEvents.touchUpInside)
     }
-    @objc public func nj_backBtnClick(btn: UIButton) {
+    @objc open func nj_backBtnClick(btn: UIButton) {
         if (navigationController?.presentedViewController != nil || navigationController?.presentingViewController != nil) && navigationController?.childViewControllers.count == 1 {
             dismiss(animated: true, completion: nil)
         }else if let navVc = navigationController {

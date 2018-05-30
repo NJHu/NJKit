@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NJNavigationBar: UIView {
+open class NJNavigationBar: UIView {
     
     public let bottomSepLineView = UIView()
     public let titleLabel = UILabel()
@@ -18,11 +18,11 @@ class NJNavigationBar: UIView {
         setupUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
@@ -43,23 +43,23 @@ class NJNavigationBar: UIView {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1, constant: UIApplication.shared.statusBarFrame.size.height))
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         bottomSepLineView.frame = CGRect(x: 0, y: frame.size.height, width: frame.size.width, height: 1.0 / UIScreen.main.scale)
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    override func touchesEstimatedPropertiesUpdated(_ touches: Set<UITouch>) {
+    override open func touchesEstimatedPropertiesUpdated(_ touches: Set<UITouch>) {
         
     }
 }

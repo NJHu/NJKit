@@ -7,13 +7,15 @@
 //
 
 import UIKit
-import NJKit
+import Alamofire
 
-class ViewController: NJTableViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Alamofire.request(URL(fileURLWithPath: ""))
+        
     }
 
     override func didReceiveMemoryWarning() {
