@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		2F6D79CF3C388160AD86523E /* Pods-NJKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJKit_Tests/Pods-NJKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		36E5058694C0C559F0A86D1C /* NJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = NJKit.podspec; path = ../NJKit.podspec; sourceTree = "<group>"; };
+		36E5058694C0C559F0A86D1C /* NJKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NJKit.podspec; path = ../NJKit.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* NJKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NJKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,9 +44,9 @@
 		9C1FE1BD339F43F0BEB837BD /* Pods_NJKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NJKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DB25A19EA28186427A801B /* Pods-NJKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NJKit_Example/Pods-NJKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B3FF31A41C5062200990FD2B /* Pods-NJKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJKit_Example/Pods-NJKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		CD3EFB6F32E951B8440962FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CD3EFB6F32E951B8440962FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D7351119F183E1272C8FE04C /* Pods_NJKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NJKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7A5A8ACAC27EBEBF3E1D554 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E7A5A8ACAC27EBEBF3E1D554 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +209,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = NJ;
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
