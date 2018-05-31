@@ -2,31 +2,31 @@ PODS:
   - Alamofire (4.7.2)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.3)
-  - NJKit (1.0.0):
+  - NJKit (1.0.3):
     - Masonry
-    - NJKit/Category (= 1.0.0)
-    - NJKit/Network (= 1.0.0)
-    - NJKit/View (= 1.0.0)
-    - NJKit/ViewController (= 1.0.0)
-    - NJKit/Xib (= 1.0.0)
+    - NJKit/Category (= 1.0.3)
+    - NJKit/Network (= 1.0.3)
+    - NJKit/View (= 1.0.3)
+    - NJKit/ViewController (= 1.0.3)
+    - NJKit/Xib (= 1.0.3)
     - SDWebImage
-  - NJKit/Category (1.0.0):
+  - NJKit/Category (1.0.3):
     - Masonry
     - SDWebImage
-  - NJKit/Network (1.0.0):
+  - NJKit/Network (1.0.3):
     - Alamofire
     - Masonry
     - SDWebImage
-  - NJKit/View (1.0.0):
+  - NJKit/View (1.0.3):
     - Masonry
     - MJRefresh
     - SDWebImage
-  - NJKit/ViewController (1.0.0):
+  - NJKit/ViewController (1.0.3):
     - Masonry
     - MJRefresh
     - NJKit/View
     - SDWebImage
-  - NJKit/Xib (1.0.0):
+  - NJKit/Xib (1.0.3):
     - Masonry
     - SDWebImage
   - SDWebImage (4.3.3):
@@ -36,17 +36,24 @@ PODS:
 DEPENDENCIES:
   - NJKit (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Masonry
+    - MJRefresh
+    - SDWebImage
+
 EXTERNAL SOURCES:
   NJKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  NJKit: abaa9e72bd481783b38b048be1da11bb527a8c5a
+  NJKit: 67a4dbc40d38eaabb5a7a517643872e716dc46aa
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
 PODFILE CHECKSUM: 0e870bb9fc0447594c7c6e670bc7ddb116d2b060
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
