@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'NJKit'
-s.version          = '1.0.4'
+s.version          = '1.0.6'
 s.summary          = 'NJ 开发基本常用类'
 
 
@@ -14,7 +14,8 @@ s.homepage         = 'https://github.com/njhu/NJKit'
 
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'njhu' => '64hp@163.com' }
-s.source           = { :git => 'https://github.com/njhu/NJKit.git', :tag => s.version.to_s }
+#s.source           = { :git => 'https://github.com/njhu/NJKit.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/njhu/NJKit.git', :branch =>'master' }
 
 
 s.ios.deployment_target = '10.3'
@@ -49,9 +50,11 @@ end
 #二级目录
 
 
-s.resource_bundles = {
-'NJKit' => ['NJKit/Assets/**/*']
-}
+#s.resource_bundles = {
+#'NJKit' => ['NJKit/*.{bundle}']
+#}
+
+s.resource     = 'NJKit/NJKitAssets.bundle'
 
 
 s.dependency 'Masonry'

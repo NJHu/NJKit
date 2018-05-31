@@ -73,8 +73,8 @@ extension NJNavBarViewController {
 extension NJNavBarViewController {
     private func nj_addBackBtn() {
        
-        let fileReturn = "NJKit.bundle/Contents/Resources/navigationButtonReturn"
-        let fileReturnClick = "NJKit.bundle/Contents/Resources/navigationButtonReturnClick"
+        let fileReturn = "NJKitAssets.bundle/Contents/Resources/NJKit_navigation_Button_Return_normal"
+        let fileReturnClick = "NJKitAssets.bundle/Contents/Resources/NJKit_navigation_Button_Return_Click"
         let fileReturnPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturn)"
         let fileReturnClickPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturnClick)"
         
