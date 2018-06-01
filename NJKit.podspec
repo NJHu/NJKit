@@ -32,7 +32,6 @@ end
 s.subspec 'Network' do |ss|
     ss.source_files = 'NJKit/Classes/Network/*.{swift}'
     ss.dependency 'Alamofire'
-    ss.frameworks      = 'UIKit'
 end
 
 s.subspec 'View' do |ss|
@@ -48,10 +47,10 @@ s.subspec 'ViewController' do |ss|
     ss.dependency 'NJKit/View'
 end
 
-s.subspec 'Xib' do |ss|
-    ss.source_files = 'NJKit/Xib/*.{xib}'
-    ss.frameworks      = 'UIKit'
-end
+#s.subspec 'Xib' do |ss|
+#    ss.source_files = 'NJKit/Xib/*.{xib}'
+#    ss.frameworks      = 'UIKit'
+#end
 #二级目录
 
 
