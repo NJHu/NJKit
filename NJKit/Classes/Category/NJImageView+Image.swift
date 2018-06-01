@@ -9,6 +9,6 @@
 import UIKit
 import SDWebImage
 
-extension UIImageView {
+public extension UIImageView {
 
 }

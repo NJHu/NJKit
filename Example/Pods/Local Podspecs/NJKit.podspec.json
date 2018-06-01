@@ -1,6 +1,6 @@
 {
   "name": "NJKit",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "summary": "NJ 开发基本常用类",
   "description": "开发工具, 控制器, UI, Network, Tools, Extensions",
   "homepage": "https://github.com/njhu/NJKit",
@@ -18,11 +18,9 @@
   "platforms": {
     "ios": "10.3"
   },
-  "resource_bundles": {
-    "NJKit": [
-      "NJKit/*.{bundle}"
-    ]
-  },
+  "source_files": "NJKit/NJKit/**/*",
+  "resources": "NJKit/NJKit.xcassets",
+  "frameworks": "UIKit",
   "dependencies": {
     "Masonry": [
 
@@ -34,7 +32,8 @@
   "subspecs": [
     {
       "name": "Category",
-      "source_files": "NJKit/Classes/Category/*.{swift}"
+      "source_files": "NJKit/Classes/Category/*.{swift}",
+      "frameworks": "UIKit"
     },
     {
       "name": "Network",
@@ -43,11 +42,13 @@
         "Alamofire": [
 
         ]
-      }
+      },
+      "frameworks": "UIKit"
     },
     {
       "name": "View",
       "source_files": "NJKit/Classes/View/*.{swift}",
+      "frameworks": "UIKit",
       "dependencies": {
         "MJRefresh": [
 
@@ -57,6 +58,7 @@
     {
       "name": "ViewController",
       "source_files": "NJKit/Classes/ViewController/*.{swift}",
+      "frameworks": "UIKit",
       "dependencies": {
         "MJRefresh": [
 
@@ -68,7 +70,8 @@
     },
     {
       "name": "Xib",
-      "source_files": "NJKit/Xib/*.{xib}"
+      "source_files": "NJKit/Xib/*.{xib}",
+      "frameworks": "UIKit"
     }
   ]
 }

@@ -2,36 +2,36 @@ PODS:
   - Alamofire (4.7.2)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.3)
-  - NJKit (1.0.5):
+  - NJKit (1.0.6):
     - Masonry
-    - NJKit/Category (= 1.0.5)
-    - NJKit/Network (= 1.0.5)
-    - NJKit/View (= 1.0.5)
-    - NJKit/ViewController (= 1.0.5)
-    - NJKit/Xib (= 1.0.5)
+    - NJKit/Category (= 1.0.6)
+    - NJKit/Network (= 1.0.6)
+    - NJKit/View (= 1.0.6)
+    - NJKit/ViewController (= 1.0.6)
+    - NJKit/Xib (= 1.0.6)
     - SDWebImage
-  - NJKit/Category (1.0.5):
+  - NJKit/Category (1.0.6):
     - Masonry
     - SDWebImage
-  - NJKit/Network (1.0.5):
+  - NJKit/Network (1.0.6):
     - Alamofire
     - Masonry
     - SDWebImage
-  - NJKit/View (1.0.5):
+  - NJKit/View (1.0.6):
     - Masonry
     - MJRefresh
     - SDWebImage
-  - NJKit/ViewController (1.0.5):
+  - NJKit/ViewController (1.0.6):
     - Masonry
     - MJRefresh
     - NJKit/View
     - SDWebImage
-  - NJKit/Xib (1.0.5):
+  - NJKit/Xib (1.0.6):
     - Masonry
     - SDWebImage
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.4.0):
+    - SDWebImage/Core (= 4.4.0)
+  - SDWebImage/Core (4.4.0)
 
 DEPENDENCIES:
   - NJKit (from `../`)
@@ -51,8 +51,8 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  NJKit: 63991854529d47c8811a1e2d9c640a9bd12b0ffa
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  NJKit: bc38c4f6bfc5ea4273c3b8d2d9ee36e93ccddf3a
+  SDWebImage: b534502786e43dde36dfcaee89356fe6df30e203
 
 PODFILE CHECKSUM: 0e870bb9fc0447594c7c6e670bc7ddb116d2b060
 

@@ -27,3 +27,33 @@ njhu, 64hp@163.com
 ## License
 
 NJKit is available under the MIT license. See the LICENSE file for more info.
+
+
+s.subspec 'Category' do |ss|
+ss.source_files = 'NJKit/Classes/Category/*.{swift}'
+ss.frameworks      = 'UIKit'
+end
+
+s.subspec 'Network' do |ss|
+ss.source_files = 'NJKit/Classes/Network/*.{swift}'
+ss.dependency 'Alamofire'
+ss.frameworks      = 'UIKit'
+end
+
+s.subspec 'View' do |ss|
+ss.source_files = 'NJKit/Classes/View/*.{swift}'
+ss.frameworks      = 'UIKit'
+ss.dependency 'MJRefresh'
+end
+
+s.subspec 'ViewController' do |ss|
+ss.source_files = 'NJKit/Classes/ViewController/*.{swift}'
+ss.frameworks      = 'UIKit'
+ss.dependency 'MJRefresh'
+ss.dependency 'NJKit/View'
+end
+
+s.subspec 'Xib' do |ss|
+ss.source_files = 'NJKit/Xib/*.{xib}'
+ss.frameworks      = 'UIKit'
+end

@@ -72,14 +72,8 @@ extension NJNavBarViewController {
 
 extension NJNavBarViewController {
     private func nj_addBackBtn() {
-       
-        let fileReturn = "NJKitAssets.bundle/Contents/Resources/NJKit_navigation_Button_Return_normal"
-        let fileReturnClick = "NJKitAssets.bundle/Contents/Resources/NJKit_navigation_Button_Return_Click"
-        let fileReturnPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturn)"
-        let fileReturnClickPath = "\(Bundle.main.resourcePath ?? "")/\(fileReturnClick)"
-        
-        nj_backBtn.setImage(UIImage(contentsOfFile: fileReturnPath ), for: UIControlState.normal)
-        nj_backBtn.setImage(UIImage(contentsOfFile: fileReturnClickPath ), for: UIControlState.highlighted)
+    nj_backBtn.setImage(NJImageResourcePath("NJKit_navigation_Button_Return_normal"), for: UIControlState.normal)
+    nj_backBtn.setImage(NJImageResourcePath("NJKit_navigation_Button_Return_Click"), for: UIControlState.highlighted)
         nj_backBtn.frame = CGRect(x: 0, y: nj_navigationBar.frame.size.height - 44.0, width: 34.0, height: 44.0)
         nj_navigationBar.addSubview(nj_backBtn)
         nj_backBtn.addTarget(self, action: #selector(nj_backBtnClick(btn:)), for: UIControlEvents.touchUpInside)
@@ -94,6 +88,14 @@ extension NJNavBarViewController {
         }else if (presentationController != nil || presentedViewController != nil) {
             dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension NJNavBarViewController {
+    public func NJImageResourcePath(_ fileName: String) -> UIImage? {
+        let bundle = Bundle(for: NJNavigationBar.self)
+        let image  = UIImage(named: fileName, in: bundle, compatibleWith: nil)
+        return image
     }
 }
 
