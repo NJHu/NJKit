@@ -18,8 +18,8 @@
   "platforms": {
     "ios": "10.3"
   },
-  "source_files": "NJKit/NJKit/**/*",
-  "resources": "NJKit/NJKit.xcassets",
+  "source_files": "NJKit/Classes/**/*",
+  "resources": "NJKit/**/*.{xcassets}",
   "frameworks": "UIKit",
   "dependencies": {
     "Masonry": [
@@ -27,51 +27,12 @@
     ],
     "SDWebImage": [
 
+    ],
+    "MJRefresh": [
+
+    ],
+    "Alamofire": [
+
     ]
-  },
-  "subspecs": [
-    {
-      "name": "Category",
-      "source_files": "NJKit/Classes/Category/*.{swift}",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "Network",
-      "source_files": "NJKit/Classes/Network/*.{swift}",
-      "dependencies": {
-        "Alamofire": [
-
-        ]
-      },
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "View",
-      "source_files": "NJKit/Classes/View/*.{swift}",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MJRefresh": [
-
-        ]
-      }
-    },
-    {
-      "name": "ViewController",
-      "source_files": "NJKit/Classes/ViewController/*.{swift}",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MJRefresh": [
-
-        ],
-        "NJKit/View": [
-
-        ]
-      }
-    },
-    {
-      "name": "Xib",
-      "source_files": "NJKit/Xib/*.{xib}",
-      "frameworks": "UIKit"
-    }
-  ]
+  }
 }
