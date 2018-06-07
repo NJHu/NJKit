@@ -19,7 +19,11 @@
     "ios": "10.3"
   },
   "source_files": "NJKit/Classes/**/*",
-  "resources": "NJKit/**/*.{xcassets}",
+  "resource_bundles": {
+    "NJKit": [
+      "NJKit/Assets/**/*.{xcassets,plist,webp}"
+    ]
+  },
   "frameworks": "UIKit",
   "dependencies": {
     "Masonry": [
