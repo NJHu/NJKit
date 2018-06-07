@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'NJKit'
-s.version          = '1.0.6'
+#s.version          = '1.0.6'
 s.summary          = 'NJ 开发基本常用类'
 
 
