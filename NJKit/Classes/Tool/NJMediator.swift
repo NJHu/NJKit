@@ -15,9 +15,12 @@ open class NJMediator: NSObject {
 
 extension NJMediator {
     
-    public func perform(target targetName: String, action actionName: String, params: [String: AnyObject]?, shouldCacheTarget: Bool = false) -> AnyObject? {
+    public func perform(nameSpace space: String , target targetName: String, action actionName: String, params: [String: AnyObject]?, shouldCacheTarget: Bool = false) -> AnyObject? {
+        print(space)
+        print(targetName)
+        print(actionName)
         
-        guard let targetType = NSClassFromString("Target_\(targetName)") as? NSObject.Type else {
+        guard let targetType = NSClassFromString("\(space).Target_\(targetName)") as? NSObject.Type else {
             return nil
         }
         
