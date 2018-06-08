@@ -31,21 +31,26 @@ open class NJNavigationBar: UIView {
         backgroundColor = UIColor.white
         addSubview(bottomSepLineView)
         addSubview(titleLabel)
-        bottomSepLineView.backgroundColor = UIColor.darkGray
+        bottomSepLineView.backgroundColor = UIColor.lightGray
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor.black
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false;
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomSepLineView.translatesAutoresizingMaskIntoConstraints = false
 //        titleLabel.backgroundColor = UIColor.yellow
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0));
         titleLabel.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.width, multiplier: 0, constant: 44))
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.width, multiplier: 0.5, constant: 0))
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1, constant: UIApplication.shared.statusBarFrame.size.height))
+        
+        addConstraint(NSLayoutConstraint(item: bottomSepLineView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: bottomSepLineView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: bottomSepLineView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0))
+        bottomSepLineView.addConstraint(NSLayoutConstraint(item: bottomSepLineView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 0, constant: 1.0 / UIScreen.main.scale))
     }
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        bottomSepLineView.frame = CGRect(x: 0, y: frame.size.height, width: frame.size.width, height: 1.0 / UIScreen.main.scale)
     }
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
