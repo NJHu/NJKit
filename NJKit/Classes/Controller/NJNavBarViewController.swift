@@ -12,7 +12,11 @@ open  class NJNavBarViewController: UIViewController {
     // 默认可以全局滑动返回
     public var nj_interactivePopDisabled = false
     // 是否需要隐藏返回按钮
-    public var nj_isBackActionBtnHidden = false
+    public var nj_isBackActionBtnHidden = false {
+        didSet {
+            nj_backBtn.isHidden = nj_isBackActionBtnHidden
+        }
+    }
     public let nj_navigationBar: NJNavigationBar = NJNavigationBar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44.0 + UIApplication.shared.statusBarFrame.size.height)))
     private let nj_backBtn: UIButton = UIButton(type: UIButtonType.custom)
     override open func viewDidLoad() {
