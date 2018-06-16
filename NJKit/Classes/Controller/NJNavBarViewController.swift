@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Masonry
 
 open  class NJNavBarViewController: UIViewController {
     // 默认可以全局滑动返回
@@ -78,8 +79,8 @@ extension NJNavBarViewController {
 
 extension NJNavBarViewController {
     private func nj_addBackBtn() {
-    nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_normal", bundleClass: self.classForCoder), for: UIControlState.normal)
-    nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_Click", bundleClass: self.classForCoder), for: UIControlState.highlighted)
+        nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJNavBarViewController.self), for: UIControlState.normal)
+    nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJNavBarViewController.self), for: UIControlState.highlighted)
         nj_backBtn.frame = CGRect(x: 0, y: nj_navigationBar.frame.size.height - 44.0, width: 34.0, height: 44.0)
         nj_navigationBar.addSubview(nj_backBtn)
         nj_backBtn.addTarget(self, action: #selector(nj_backBtnClick(btn:)), for: UIControlEvents.touchUpInside)

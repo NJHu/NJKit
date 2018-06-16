@@ -213,8 +213,8 @@ extension NJWebViewController: WKUIDelegate {
 // MARK:- btns
 extension NJWebViewController {
     private func addActions() {
-        backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_normal", bundleClass: self.classForCoder), for: UIControlState.normal)
-        backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_Click", bundleClass: self.classForCoder), for: UIControlState.highlighted)
+        backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJWebViewController.self), for: UIControlState.normal)
+        backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJWebViewController.self), for: UIControlState.highlighted)
         closeBtn.setTitle("关闭", for: UIControlState.normal)
         closeBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
         closeBtn.setTitleColor(UIColor.red, for: UIControlState.highlighted)
