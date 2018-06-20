@@ -18,15 +18,13 @@ open  class NJNavBarViewController: UIViewController {
             nj_backBtn.isHidden = nj_isBackActionBtnHidden
         }
     }
-    public let nj_navigationBar: NJNavigationBar = NJNavigationBar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44.0 + UIApplication.shared.statusBarFrame.size.height)))
+    public let nj_navigationBar: NJNavigationBar = NJNavigationBar()
     private let nj_backBtn: UIButton = UIButton(type: UIButtonType.custom)
     override open func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(nj_navigationBar)
-        nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
-        nj_navigationBar.titleLabel.text = navigationItem.title != nil ? navigationItem.title : title
-        navigationItem.addObserver(self, forKeyPath: "title", options: NSKeyValueObservingOptions.new, context: nil)
+        nj_addNavBar()
         nj_addBackBtn()
+        navigationItem.addObserver(self, forKeyPath: "title", options: NSKeyValueObservingOptions.new, context: nil)
     }
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,6 +76,18 @@ extension NJNavBarViewController {
 }
 
 extension NJNavBarViewController {
+    private func nj_addNavBar () {
+//        44.0 + UIApplication.shared.statusBarFrame.size.height
+        view.addSubview(nj_navigationBar)
+        nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
+        nj_navigationBar.titleLabel.text = navigationItem.title != nil ? navigationItem.title : title
+        nj_navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        nj_navigationBar.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 0, constant: 44.0 + UIApplication.shared.statusBarFrame.size.height))
+        view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0))
+    }
     private func nj_addBackBtn() {
         nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJNavBarViewController.self), for: UIControlState.normal)
     nj_backBtn.setImage(UIImage.nj_imageFromXcassets(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJNavBarViewController.self), for: UIControlState.highlighted)
