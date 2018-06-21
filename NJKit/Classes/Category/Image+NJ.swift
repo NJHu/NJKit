@@ -9,15 +9,17 @@ import UIKit
 import Foundation
 
 extension UIImage {
-    public static func nj_imageFromXcassets(name: String, bundleClass: AnyClass?) -> UIImage? {
+    public static func nj_image(name: String, bundleClass: AnyClass?, bundleFile: String? = nil) -> UIImage? {
         var image: UIImage?
-        var bundle = bundleClass == nil ? Bundle.main : Bundle(for: bundleClass!)
+        
+        let bundle = bundleClass == nil ? Bundle.main : Bundle(for: bundleClass!)
         
         image = self.init(named: name, in: bundle, compatibleWith: nil)
-        if image == nil {
-            let scaleName = "\(name)@\(Int(UIScreen.main.scale))x.png"
-            image = self.init(named: name, in: bundle, compatibleWith: nil)
+        
+        if image == nil, let path = bundle.path(forResource: bundleFile, ofType: "bundle") {
+            image = self.init(named: name, in: Bundle.init(path: path), compatibleWith: nil)
         }
+        
         return image
     }
 }
