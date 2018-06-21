@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Masonry
 
 open  class NJNavBarViewController: UIViewController {
     // 默认可以全局滑动返回
