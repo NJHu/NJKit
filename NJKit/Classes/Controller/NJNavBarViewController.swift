@@ -83,7 +83,7 @@ extension NJNavBarViewController {
 
 extension NJNavBarViewController {
     private func nj_addNavBar () {
-//        44.0 + UIApplication.shared.statusBarFrame.size.height
+
         view.addSubview(nj_navigationBar)
         nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
         nj_navigationBar.titleLabel.text = navigationItem.title != nil ? navigationItem.title : title

@@ -9,11 +9,7 @@
 import UIKit
 
 open class NJNavigationController: UINavigationController {
-    // 是否"让" tabBar 跳转, 默认是让的
-    public var nj_tabBarShouldSelect: () -> Bool = {
-        return true
-    }
-    
+
     open  override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isHidden = true
