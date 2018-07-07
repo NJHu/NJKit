@@ -48,3 +48,26 @@ extension NJNavigationController: UIGestureRecognizerDelegate {
         }
     }
 }
+
+extension NJNavigationController {
+    open override var prefersStatusBarHidden: Bool {
+        return self.topViewController?.prefersStatusBarHidden ?? false
+    }
+    open  override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.topViewController?.preferredStatusBarStyle ?? UIStatusBarStyle.default
+    }
+    open  override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return self.topViewController?.preferredStatusBarUpdateAnimation ?? UIStatusBarAnimation.slide
+    }
+    open override var shouldAutorotate: Bool {
+        return self.topViewController?.shouldAutorotate ?? false
+    }
+    // MARK: - about keyboard orientation
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return self.topViewController?.supportedInterfaceOrientations ?? UIInterfaceOrientationMask.allButUpsideDown;
+    }
+    //返回最优先显示的屏幕方向
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return self.topViewController?.preferredInterfaceOrientationForPresentation ?? UIInterfaceOrientation.portraitUpsideDown
+    }
+}

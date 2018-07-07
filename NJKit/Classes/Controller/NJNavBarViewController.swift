@@ -19,6 +19,7 @@ open  class NJNavBarViewController: UIViewController {
     }
     public let nj_navigationBar: NJNavigationBar = NJNavigationBar()
     private let nj_backBtn: UIButton = UIButton(type: UIButtonType.custom)
+    private var heightConstraint: NSLayoutConstraint?
     override open func viewDidLoad() {
         super.viewDidLoad()
         nj_addNavBar()
@@ -32,6 +33,7 @@ open  class NJNavBarViewController: UIViewController {
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.bringSubview(toFront: nj_navigationBar)
+        self.heightConstraint?.constant = UIApplication.shared.statusBarFrame.size.height + 44
     }
     
     deinit {
@@ -44,7 +46,7 @@ open  class NJNavBarViewController: UIViewController {
 // MARK:- StatusBar
 //        setNeedsStatusBarAppearanceUpdate()
 extension NJNavBarViewController {
-   open  override var prefersStatusBarHidden: Bool {
+   open override var prefersStatusBarHidden: Bool {
         return false
     }
    open  override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -59,6 +61,10 @@ extension NJNavBarViewController {
     // MARK: - about keyboard orientation
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
       return UIInterfaceOrientationMask.allButUpsideDown;
+    }
+    //返回最优先显示的屏幕方向
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portraitUpsideDown
     }
 }
 
@@ -86,10 +92,11 @@ extension NJNavBarViewController {
 
         view.addSubview(nj_navigationBar)
         nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
-        nj_navigationBar.titleLabel.text = navigationItem.title != nil ? navigationItem.title : title
+        nj_navigationBar.titleLabel.text = navigationItem.title ?? title
         nj_navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        nj_navigationBar.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 0, constant: 44.0 + UIApplication.shared.statusBarFrame.size.height))
+        let heightConstraint = NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 0, constant: 44.0 + UIApplication.shared.statusBarFrame.size.height)
+        nj_navigationBar.addConstraint(heightConstraint)
+        self.heightConstraint = heightConstraint
         view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0))

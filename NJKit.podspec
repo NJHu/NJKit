@@ -59,5 +59,6 @@ s.dependency 'SnapKit'
 s.dependency 'MJRefresh'
 s.dependency 'Alamofire'
 s.dependency 'SwiftyJSON'
+s.dependency 'AlamofireImage'
 
 end
