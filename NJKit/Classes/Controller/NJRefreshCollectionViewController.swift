@@ -67,9 +67,9 @@ extension NJRefreshCollectionViewController {
 
 extension NJRefreshCollectionViewController {
     open override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        super.scrollViewWillBeginDragging(scrollView)
         var contentInset = scrollView.contentInset
         contentInset.bottom -= scrollView.mj_footer.frame.size.height
         scrollView.scrollIndicatorInsets = contentInset
-        view.endEditing(true)
     }
 }

@@ -17,7 +17,7 @@ open  class NJNavBarViewController: UIViewController {
             nj_backBtn.isHidden = nj_isBackActionBtnHidden
         }
     }
-    public let nj_navigationBar: NJNavigationBar = NJNavigationBar()
+    public let nj_navigationBar: NJNavigationBar = NJNavigationBar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.size.height + 44)))
     private let nj_backBtn: UIButton = UIButton(type: UIButtonType.custom)
     private var heightConstraint: NSLayoutConstraint?
     override open func viewDidLoad() {

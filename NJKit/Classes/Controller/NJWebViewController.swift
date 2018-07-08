@@ -28,7 +28,7 @@ open class NJWebViewController: NJViewController {
     private lazy var progressView: UIProgressView = UIProgressView()
     public var gotoUrl: String? {
         didSet {
-            gotoUrl = self.gotoUrl?.addingPercentEncoding(withAllowedCharacters: CharacterSet.init(charactersIn: "`#%^{}\"[]|\\<> ").inverted)
+            gotoUrl = self.gotoUrl?.urlEncoding()
         }
     }
     

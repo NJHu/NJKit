@@ -18,7 +18,7 @@ public class NJResponse: NSObject {
     public var requestUrl: URL?
     public var errorMsg: String?
     public var statusCode: Int = 0
-    public var headers: [String: Any]?
+    public var headers: [AnyHashable: Any]?
     public var responseObject: Any?
     public var timeline: Timeline?
     public override var description: String {
@@ -30,9 +30,10 @@ public class NJResponse: NSObject {
 // MARK:- NJNetworkTool
 import Alamofire
 
-enum NJNetworkToolError: Error {
+public enum NJNetworkToolError: Error {
     case networkNotReachable
-    case urlError
+    case urlWrong
+    case serverWrong
 }
 
 public class NJNetworkTool: NSObject {
@@ -68,8 +69,8 @@ extension NJNetworkTool {
             return
         }
         
-        guard let urlStr = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.init(charactersIn: "`#%^{}\"[]|\\<> ").inverted) else {
-            let result =  Result<Any>.failure(NJNetworkToolError.urlError)
+        guard let urlStr = url.urlEncoding() else {
+            let result =  Result<Any>.failure(NJNetworkToolError.urlWrong)
             self.wrapper(dataResponse: DataResponse(request: nil, response: nil, data: nil, result: result), completionHandler: completionHandler)
             return;
         }
@@ -90,6 +91,7 @@ extension NJNetworkTool {
         response.error = dataResponse.result.error
         response.errorMsg = dataResponse.result.error?.localizedDescription
         response.statusCode = dataResponse.response?.statusCode ?? 0
+        response.headers = dataResponse.response?.allHeaderFields
         response.timeline = dataResponse.timeline
         response.responseObject = dataResponse.result.value ?? dataResponse.data
         // 打印

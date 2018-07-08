@@ -12,6 +12,7 @@ protocol NJTitlesListsControllerProtocol {
 }
 
 open class NJTitlesListsController: NJViewController, NJTitlesListsControllerProtocol {
+    
     public var titleScrollView = UIScrollView()
     public var titleBtns = [UIButton]()
     public var scrollView = UIScrollView()
@@ -37,7 +38,24 @@ open class NJTitlesListsController: NJViewController, NJTitlesListsControllerPro
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        
         nj_interactivePopDisabled = true
+        
+        nj_setup2ScrollViews()
+        
+        nj_addChildControllers()
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * CGFloat(self.childViewControllers.count), height: 1.0);
+        
+        nj_addBtns()
+        
+        selectedIndex(index: firstShowIndex)
+    }
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.insertSubview(scrollView, at: 0)
+    }
+    
+    private func nj_setup2ScrollViews() {
         view.addSubview(titleScrollView)
         view.addSubview(scrollView)
         
@@ -64,17 +82,12 @@ open class NJTitlesListsController: NJViewController, NJTitlesListsControllerPro
         }
         titleScrollView.contentInset = UIEdgeInsets.zero
         titleScrollView.isPagingEnabled = false
-        
-        
-        nj_addChildControllers()
-        
-        nj_addBtns()
-        
-        selectedIndex(index: firstShowIndex)
     }
+    
     open func nj_addChildControllers() {
-        
+        assert(true, "子类需要实现")
     }
+    
     private func nj_addBtns() {
         
         for vc in self.childViewControllers {
@@ -91,14 +104,6 @@ open class NJTitlesListsController: NJViewController, NJTitlesListsControllerPro
             titleBtns.append(btn)
         }
         titleScrollView.contentSize = CGSize(width: (titleBtns.last?.frame.maxX ?? 0) + 10, height: 1)
-    }
-    open override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        view.insertSubview(scrollView, at: 0)
-    }
-    open override func addChildViewController(_ childController: UIViewController) {
-        super.addChildViewController(childController)
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * CGFloat(self.childViewControllers.count), height: 1.0);
     }
     
 }
