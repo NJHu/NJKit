@@ -64,8 +64,9 @@ extension NJNavBarViewController {
     }
     //返回最优先显示的屏幕方向
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portraitUpsideDown
+        return UIInterfaceOrientation.portrait
     }
+    
 }
 
 // MARK:- title
