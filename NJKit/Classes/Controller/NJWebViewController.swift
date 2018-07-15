@@ -249,7 +249,7 @@ extension NJWebViewController {
 // MARK:- NJWebViewControllerDelegate
 extension NJWebViewController: NJWebViewControllerDelegate {
     public func webViewScrollViewContentSize(_ webView: WKWebView, _ controller: NJWebViewController, _ scrollView: UIScrollView, _ contentSize: CGSize) {
-        print(webView, controller, scrollView, contentSize)
+//        print(webView, controller, scrollView, contentSize)
     }
     public func webViewBackBtnClick(_ webView: WKWebView, _ controller: NJWebViewController, _ btn: UIButton?) {
         if webView.canGoBack {
