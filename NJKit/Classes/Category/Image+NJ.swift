@@ -20,6 +20,13 @@ extension UIImage {
             image = self.init(named: name, in: Bundle.init(path: path), compatibleWith: nil)
         }
         
+        if image == nil && bundleClass != nil {
+            let nameSpace = NSStringFromClass(bundleClass!).components(separatedBy: ".").first
+            if let nameS = nameSpace,  let path = bundle.path(forResource: nameS, ofType: "bundle"){
+                image = self.init(named: name, in: Bundle.init(path: path), compatibleWith: nil)
+            }
+        }
+        
         return image
     }
 }
