@@ -167,6 +167,11 @@ extension NJWebViewController: WKNavigationDelegate {
         }else {
             completionHandler(.performDefaultHandling, nil)
         }
+//        self.webView?.evaluateJavaScript("document.getElementById('html5player-video').src") { (el, error) in
+//            print("3-6-3-6-3-6-3-6")
+//            print(el)
+//            print(error)
+//        }
     }
     // 4, 在收到响应后，决定是否跳转, 在收到响应后，决定是否跳转和发送请求之前那个允许配套使用
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void) {
