@@ -68,4 +68,8 @@ public class NJProgressHUD {
             }
         }
     }
+    
+    class public func toast(_ tip: String, in view: UIView?) {
+        
+    }
 }
