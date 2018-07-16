@@ -55,12 +55,14 @@ extension NJLiveRoomStreamTool {
     private func failCallback(webView: WKWebView, error: Error) {
         if let fail =  self.handles[webView]?["failure"] as? ((_ roomH5Url: String, _ error: Error) -> ()) {
             fail(self.handles[webView]?["roomH5Url"] as! String, error)
+            webView.stopLoading()
             self.handles.removeValue(forKey: webView)
         }
     }
     private func successCallback(webView: WKWebView, streamUrl: String) {
         if let success =  self.handles[webView]?["success"] as? ((_ roomH5Url: String, _ streamUrl: String) -> ()) {
             success(self.handles[webView]?["roomH5Url"] as! String, streamUrl)
+            webView.stopLoading()
             self.handles.removeValue(forKey: webView)
         }
     }
