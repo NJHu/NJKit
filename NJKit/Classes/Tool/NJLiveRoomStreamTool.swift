@@ -28,11 +28,11 @@ extension NJLiveRoomStreamTool {
     ///   - elementClass: 直播h5网页 里边<video>标签的class
     ///   - success: 成功的回调
     ///   - failure: 失败的回调
-    public func nj_getStreamUrl(roomH5Url: String, elementId: String?, elementClass: String?, success: @escaping (_ roomH5Url: String, _ streamUrl: String) -> (), failure: @escaping (_ roomH5Url: String, _ error: Error) -> ()) {
+    public func nj_getStreamUrl(roomH5Url: String, elementId: String? = nil, elementClass: String? = nil, success: @escaping (_ roomH5Url: String, _ streamUrl: String) -> (), failure: @escaping (_ roomH5Url: String, _ error: Error) -> ()) {
         
         let webView = addWkWebView()
         setUpWkWebView(webView: webView)
-        
+
         handles[webView] = ["success": success, "failure": failure, "roomH5Url": roomH5Url, "elementId": elementId, "elementClass": elementClass]
         
         if let url = URL(string: roomH5Url) {
@@ -69,7 +69,7 @@ extension NJLiveRoomStreamTool {
     // 通过js获得src
     private func evaluateVideoElementJS(webView: WKWebView) {
         if let elementId = self.handles[webView]?["elementId"] as? String {
-            webView.evaluateJavaScript("document.querySelector('#\(elementId)').src") { (streamUrl, error) in
+            webView.evaluateJavaScript("document.querySelector(\"#\(elementId)\").src") { (streamUrl, error) in
                 if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
                     self.successCallback(webView: webView, streamUrl: stream)
                 }
@@ -77,14 +77,14 @@ extension NJLiveRoomStreamTool {
         }
         
         if let elementClass = self.handles[webView]?["elementClass"] as? String {
-            webView.evaluateJavaScript("document.querySelector('.\(elementClass)').src") { (streamUrl, error) in
+            webView.evaluateJavaScript("document.querySelector(\".\(elementClass)\").src") { (streamUrl, error) in
                 if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
                     self.successCallback(webView: webView, streamUrl: stream)
                 }
             }
         }
         
-        webView.evaluateJavaScript("document.querySelector('video[src]').src") { (streamUrl, error) in
+        webView.evaluateJavaScript("document.querySelector(\"video[src]\").src") { (streamUrl, error) in
             if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
                 self.successCallback(webView: webView, streamUrl: stream)
             }
@@ -96,7 +96,7 @@ extension NJLiveRoomStreamTool {
 extension NJLiveRoomStreamTool {
     private func addWkWebView() -> WKWebView {
         let configuration = WKWebViewConfiguration()
-        let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 10, height: 10), configuration: configuration)
+        let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 5, height: 5), configuration: configuration)
         return webView
     }
     private func setUpWkWebView(webView: WKWebView?) -> Void {
