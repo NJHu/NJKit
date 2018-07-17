@@ -66,6 +66,30 @@ extension NJLiveRoomStreamTool {
             self.handles.removeValue(forKey: webView)
         }
     }
+    // 通过js获得src
+    private func evaluateVideoElementJS(webView: WKWebView) {
+        if let elementId = self.handles[webView]?["elementId"] as? String {
+            webView.evaluateJavaScript("document.querySelector('#\(elementId)').src") { (streamUrl, error) in
+                if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+                    self.successCallback(webView: webView, streamUrl: stream)
+                }
+            }
+        }
+        
+        if let elementClass = self.handles[webView]?["elementClass"] as? String {
+            webView.evaluateJavaScript("document.querySelector('.\(elementClass)').src") { (streamUrl, error) in
+                if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+                    self.successCallback(webView: webView, streamUrl: stream)
+                }
+            }
+        }
+        
+        webView.evaluateJavaScript("document.querySelector('video[src]').src") { (streamUrl, error) in
+            if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
+                self.successCallback(webView: webView, streamUrl: stream)
+            }
+        }
+    }
 }
 
 // MARK:- setting
@@ -110,6 +134,8 @@ extension NJLiveRoomStreamTool {
         if #available(iOS 11, *) {
             webView?.scrollView.contentInsetAdjustmentBehavior = .never
         }
+        
+        webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/604.4.7 (KHTML, like Gecko) Version/11.0.2 Safari/604.4.7"
     }
 }
 
@@ -128,22 +154,7 @@ extension NJLiveRoomStreamTool: WKNavigationDelegate {
         }else {
             completionHandler(.performDefaultHandling, nil)
         }
-        
-        if let elementId = self.handles[webView]?["elementId"] as? String {
-            webView.evaluateJavaScript("document.getElementById('\(elementId)').src") { (streamUrl, error) in
-                if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
-                    self.successCallback(webView: webView, streamUrl: stream)
-                }
-            }
-        }
-        
-        if let elementClass = self.handles[webView]?["elementClass"] as? String {
-            webView.evaluateJavaScript("document.getElementsByClassName('\(elementClass)')[0].src") { (streamUrl, error) in
-                if let stream = streamUrl as? String, stream.lengthOfBytes(using: String.Encoding.utf8) > 0 {
-                    self.successCallback(webView: webView, streamUrl: stream)
-                }
-            }
-        }
+        self.evaluateVideoElementJS(webView: webView)
     }
     // 4, 在收到响应后，决定是否跳转, 在收到响应后，决定是否跳转和发送请求之前那个允许配套使用
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void) {
