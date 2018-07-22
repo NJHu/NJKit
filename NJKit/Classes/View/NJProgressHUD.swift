@@ -55,7 +55,9 @@ public class NJProgressHUD {
     class public func showLoading(in view: UIView?) {
         var parent = view == nil ? UIApplication.shared.keyWindow : view
         guard let parentView = parent else { return }
-        [parentView .addSubview(NJCoverView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.width, height: parentView.bounds.height)))];
+        let coverView = NJCoverView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.width, height: parentView.bounds.height))
+        coverView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        parentView.addSubview(coverView);
     }
     
     class public func hideLoading(in view: UIView?) {
@@ -65,6 +67,7 @@ public class NJProgressHUD {
         for subview in parentView.subviews {
             if subview.isMember(of: NJCoverView.self) {
                 (subview as? NJCoverView)?.hide()
+                break
             }
         }
     }

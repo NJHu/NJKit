@@ -1,14 +1,19 @@
 //
-//  Image+NJ.swift
-//  Alamofire
+//  UIKit+Extension.swift
+//  NJKit
 //
-//  Created by NJHu on 2018/6/9.
+//  Created by HuXuPeng on 2018/7/22.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
-extension UIImage {
+public extension UIImageView {
+    
+}
+
+
+public  extension UIImage {
     public static func nj_image(name: String, bundleClass: AnyClass?, bundleFile: String? = nil) -> UIImage? {
         var image: UIImage?
         
@@ -26,7 +31,13 @@ extension UIImage {
                 image = self.init(named: name, in: Bundle.init(path: path), compatibleWith: nil)
             }
         }
-        
+
         return image
+    }
+}
+
+public extension UIApplication {
+    var nj_interfaceOrientation_isPortrait: Bool {
+        return UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait
     }
 }

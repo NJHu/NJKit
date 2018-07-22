@@ -1,13 +1,23 @@
 //
-//  Bundle+Extension.swift
+//  Foundation+Extension.swift
 //  NJKit
 //
-//  Created by NJHu on 2018/7/15.
+//  Created by HuXuPeng on 2018/7/22.
 //
 
 import Foundation
 
-extension Bundle {
+
+public extension String {
+    
+    public func urlEncoding() -> String? {
+        let characters = "`#%^{}\"[]|\\<> "
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.init(charactersIn: characters).inverted)
+    }
+}
+
+
+public extension Bundle {
     public static func nj_curBundle(class bundleOfClass: AnyClass?, bundleFile: String? = nil) -> Bundle {
         
         var bundle = bundleOfClass == nil ? Bundle.main : Bundle(for: bundleOfClass!)

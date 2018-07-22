@@ -66,7 +66,6 @@ extension NJNavBarViewController {
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIInterfaceOrientation.portrait
     }
-    
 }
 
 // MARK:- title
