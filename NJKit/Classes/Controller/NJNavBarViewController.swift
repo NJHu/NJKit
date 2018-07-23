@@ -91,7 +91,7 @@ extension NJNavBarViewController {
     private func nj_addNavBar () {
 
         view.addSubview(nj_navigationBar)
-        nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.classForCoder()))
+        nj_navigationBar.isHidden = !(parent != nil && parent!.isKind(of: NJNavigationController.self))
         nj_navigationBar.titleLabel.text = navigationItem.title ?? title
         nj_navigationBar.translatesAutoresizingMaskIntoConstraints = false
         let heightConstraint = NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 0, constant: 44.0 + UIApplication.shared.statusBarFrame.size.height)

@@ -38,7 +38,7 @@ extension NJTableViewController {
         if #available(iOS 11, *) {
             tableView?.contentInsetAdjustmentBehavior = .never
         }
-        if (parent != nil) && parent!.isKind(of: UINavigationController.classForCoder()) {
+        if (parent != nil) && parent!.isKind(of: UINavigationController.self) {
             var contentInset = tableView!.contentInset
             contentInset.top += nj_navigationBar.frame.size.height
             tableView?.contentInset = contentInset

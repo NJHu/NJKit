@@ -105,7 +105,7 @@ extension NJWebViewController {
         if #available(iOS 11, *) {
             webView?.scrollView.contentInsetAdjustmentBehavior = .never
         }
-        if parent != nil && parent!.isKind(of: UINavigationController.classForCoder()) {
+        if parent != nil && parent!.isKind(of: UINavigationController.self) {
             var contentInset = webView!.scrollView.contentInset
             contentInset.top += nj_navigationBar.frame.size.height
             webView?.scrollView.contentInset = contentInset
