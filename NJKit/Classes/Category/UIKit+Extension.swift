@@ -41,3 +41,18 @@ public extension UIApplication {
         return UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait
     }
 }
+
+extension UIView {
+    public func nj_isShowingOnKeyWindow() -> Bool {
+        
+        let newRect = UIApplication.shared.keyWindow?.convert(self.frame, from: self.superview)
+        
+        guard let lastNewRect = newRect else {
+            return false
+        }
+        
+        let isIntersects = UIApplication.shared.keyWindow?.bounds.intersects(lastNewRect) ?? false
+        
+        return !self.isHidden && self.alpha > 0.01 && self.window == UIApplication.shared.keyWindow && isIntersects;
+    }
+}
