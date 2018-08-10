@@ -13,8 +13,8 @@ open  class NJNavBarViewController: UIViewController {
     public var nj_interactivePopDisabled = false
     // 是否需要隐藏返回按钮
     public var nj_isBackActionBtnHidden = false {
-        didSet {
-            nj_backBtn.isHidden = nj_isBackActionBtnHidden
+        willSet {
+            nj_backBtn.isHidden = newValue
         }
     }
     public let nj_navigationBar: NJNavigationBar = NJNavigationBar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.size.height + 44)))

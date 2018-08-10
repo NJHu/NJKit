@@ -40,7 +40,9 @@ extension NJNavigationController: UIGestureRecognizerDelegate {
         panGes.delegate = self
         self.interactivePopGestureRecognizer?.isEnabled = false
     }
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIPanGestureRecognizer) -> Bool {
+        let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
+        print(translation)
         if let vc = self.childViewControllers.last as? NJNavBarViewController {
             return (self.childViewControllers.count > 1 && !vc.nj_interactivePopDisabled)
         }else {
