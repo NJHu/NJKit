@@ -14,7 +14,7 @@ open class NJNavigationController: UINavigationController {
         super.viewDidLoad()
         navigationBar.isHidden = true
         view.backgroundColor = UIColor.groupTableViewBackground
-        getSystemGestureOfBack()
+//        getSystemGestureOfBack()
     }
     open  override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if childViewControllers.count > 0 {
@@ -32,7 +32,7 @@ open class NJNavigationController: UINavigationController {
     }
 }
 
-// MARK:- gesture
+// MARK:- gesture, 有问题
 extension NJNavigationController: UIGestureRecognizerDelegate {
     private func getSystemGestureOfBack() {
         let panGes = UIPanGestureRecognizer(target: self.interactivePopGestureRecognizer?.delegate, action: Selector(("handleNavigationTransition:")))
