@@ -22,7 +22,7 @@ public class NJResponse: NSObject {
     public var responseObject: Any?
     public var timeline: Timeline?
     public override var description: String {
-        return "\n请求: \(requestUrl),\n状态吗: \(statusCode),\n错误: \(error), \n错误Msg: \(errorMsg), \n响应头: \(headers),\n响应体: \(responseObject)"
+        return "\n请求: \(requestUrl), \n状态吗: \(statusCode), \n错误: \(error), \n错误Msg: \(errorMsg), \n响应头: \(headers), \n响应体: \(responseObject)"
     }
 }
 
