@@ -60,7 +60,8 @@ extension NJNavBarViewController {
     }
     // MARK: - about keyboard orientation
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-      return UIInterfaceOrientationMask.allButUpsideDown;
+//      return UIInterfaceOrientationMask.allButUpsideDown
+        return UIInterfaceOrientationMask.portrait
     }
     //返回最优先显示的屏幕方向
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
