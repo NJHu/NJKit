@@ -103,7 +103,7 @@ extension NJNavBarViewController {
         view.addConstraint(NSLayoutConstraint(item: nj_navigationBar, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0))
     }
     private func nj_addBackBtn() {
-        nj_backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJNavBarViewController.self), for: UIControlState.normal)
+        nj_backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_Normal", bundleClass: NJNavBarViewController.self), for: UIControlState.normal)
         nj_backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJNavBarViewController.self), for: UIControlState.highlighted)
         nj_backBtn.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.size.height, width: 34.0, height: 44.0)
         nj_navigationBar.addSubview(nj_backBtn)
