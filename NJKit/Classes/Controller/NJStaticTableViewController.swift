@@ -51,10 +51,16 @@ extension NJStaticTableViewController {
         
         if let img = image as? UIImage {
             cell!.imageView?.image = img
-        }
-        if let url = image as? URL {
+        }else if let url = image as? URL {
             cell!.imageView?.af_setImage(withURL: url)
+        }else if let urlStr = image as? String {
+            if let url = URL(string: urlStr) {
+                cell!.imageView?.af_setImage(withURL: url)
+            }
+        }else {
+            cell!.imageView?.image = nil;
         }
+        
         return cell!
     }
 }
