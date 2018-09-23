@@ -60,8 +60,15 @@ extension NJRefreshCollectionViewController {
         if collectionView.mj_footer.isRefreshing {
             collectionView.mj_footer.endRefreshing()
         }
-        collectionView.mj_footer.isHidden = false
+        collectionView.mj_footer.isHidden = true
         collectionView.mj_header.isHidden = false
+        
+        for section in 0..<collectionView.numberOfSections {
+            if collectionView.numberOfItems(inSection: section) > 0 {
+                collectionView.mj_footer.isHidden = false
+                break
+            }
+        }
     }
 }
 

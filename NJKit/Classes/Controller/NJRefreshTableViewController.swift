@@ -59,8 +59,14 @@ extension NJRefreshTableViewController {
         if tableView.mj_footer.isRefreshing {
             tableView.mj_footer.endRefreshing()
         }
-        tableView.mj_footer.isHidden = false
+        tableView.mj_footer.isHidden = true
         tableView.mj_header.isHidden = false
+        for section in 0..<tableView.numberOfSections {
+            if tableView.numberOfRows(inSection: section) > 0 {
+                tableView.mj_footer.isHidden = false
+                break
+            }
+        }
     }
 }
 
