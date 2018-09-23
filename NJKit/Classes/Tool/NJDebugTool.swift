@@ -11,7 +11,7 @@ import SnapKit
 public class NJDebugTool: NSObject
 {
     public static let defaultTool = NJDebugTool()
-    private let window = UIWindow(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 50))
+    private let window = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 50))
     private lazy var fpsLabel: UILabel = {
         let fpsLabel = UILabel()
         fpsLabel.textAlignment = .center
@@ -33,6 +33,7 @@ public class NJDebugTool: NSObject
     public func show()
     {
         window.isHidden = false
+        UIApplication.shared.keyWindow?.addSubview(window)
         timer.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
     }
     public func hide()
@@ -46,11 +47,8 @@ extension NJDebugTool
 {
     private func setupUIOnce()
     {
-        window.rootViewController = UIViewController(nibName: nil, bundle: nil)
         window.isHidden = false
         window.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
-        window.windowLevel = UIWindowLevelStatusBar
-        window.rootViewController?.view.removeFromSuperview()
         addPanGes()
         addFPSLabel()
         layoutSubViews()
