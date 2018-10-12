@@ -38,7 +38,7 @@ extension NJCollectionViewController {
         collectionView?.delegate = self;
     }
     private func addCollectionView () {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = NJCollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         view.addSubview(collectionView!)
     }
 }

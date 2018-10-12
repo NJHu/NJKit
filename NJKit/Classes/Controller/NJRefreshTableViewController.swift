@@ -33,16 +33,37 @@ extension NJRefreshTableViewController {
     private func refreshing(isMore: Bool) {
         if isMore {
             if tableView.mj_header.isRefreshing {
-                tableView.mj_footer.endRefreshing()
+                if tableView.mj_footer.isRefreshing {
+                    tableView.mj_footer.endRefreshing()
+                }
                 return
             }
+            
+            if tableView.mj_footer.isHidden {
+                if tableView.mj_footer.isRefreshing {
+                    tableView.mj_footer.endRefreshing()
+                }
+                return;
+            }
+            
             tableView.mj_header.isHidden = true
             tableView.mj_footer.isHidden = false
+            
         } else {
             if tableView.mj_footer.isRefreshing {
-                tableView.mj_header.endRefreshing()
+                if tableView.mj_header.isRefreshing {
+                    tableView.mj_header.endRefreshing()
+                }
                 return
             }
+            
+            if tableView.mj_header.isHidden {
+                if tableView.mj_header.isRefreshing {
+                    tableView.mj_header.endRefreshing()
+                }
+                return;
+            }
+            
             tableView.mj_header.isHidden = false
             tableView.mj_footer.isHidden = true
         }
@@ -59,14 +80,7 @@ extension NJRefreshTableViewController {
         if tableView.mj_footer.isRefreshing {
             tableView.mj_footer.endRefreshing()
         }
-        tableView.mj_footer.isHidden = true
         tableView.mj_header.isHidden = false
-        for section in 0..<tableView.numberOfSections {
-            if tableView.numberOfRows(inSection: section) > 0 {
-                tableView.mj_footer.isHidden = false
-                break
-            }
-        }
     }
 }
 
@@ -76,6 +90,18 @@ extension NJRefreshTableViewController {
         var contentInset = scrollView.contentInset
         contentInset.bottom -= scrollView.mj_footer.frame.size.height
         scrollView.scrollIndicatorInsets = contentInset
+    }
+}
+
+class NJTableView: UITableView {
+    override func reloadData() {
+        super.reloadData()
+        for section in 0..<self.numberOfSections {
+            if self.numberOfRows(inSection: section) > 0 {
+                self.mj_footer.isHidden = false
+                break
+            }
+        }
     }
 }
 

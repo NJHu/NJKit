@@ -53,7 +53,7 @@ extension NJTableViewController {
     }
     
     private func addTableView () {
-        tableView = UITableView(frame: view.bounds, style: style)
+        tableView = NJTableView(frame: view.bounds, style: style)
         view.addSubview(tableView!)
     }
 }

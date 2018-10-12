@@ -33,16 +33,37 @@ extension NJRefreshCollectionViewController {
     private func refreshing(isMore: Bool) {
         if isMore {
             if collectionView.mj_header.isRefreshing {
-                collectionView.mj_footer.endRefreshing()
+                if collectionView.mj_footer.isRefreshing {
+                    collectionView.mj_footer.endRefreshing()
+                }
                 return
             }
+            
+            if collectionView.mj_footer.isHidden {
+                if collectionView.mj_footer.isRefreshing {
+                    collectionView.mj_footer.endRefreshing()
+                }
+                return;
+            }
+            
             collectionView.mj_header.isHidden = true
             collectionView.mj_footer.isHidden = false
+            
         } else {
             if collectionView.mj_footer.isRefreshing {
-                collectionView.mj_header.endRefreshing()
+                if collectionView.mj_header.isRefreshing {
+                    collectionView.mj_header.endRefreshing()
+                }
                 return
             }
+            
+            if collectionView.mj_header.isHidden {
+                if collectionView.mj_header.isRefreshing {
+                    collectionView.mj_header.endRefreshing()
+                }
+                return;
+            }
+            
             collectionView.mj_header.isHidden = false
             collectionView.mj_footer.isHidden = true
         }
@@ -60,15 +81,7 @@ extension NJRefreshCollectionViewController {
         if collectionView.mj_footer.isRefreshing {
             collectionView.mj_footer.endRefreshing()
         }
-        collectionView.mj_footer.isHidden = true
         collectionView.mj_header.isHidden = false
-        
-        for section in 0..<collectionView.numberOfSections {
-            if collectionView.numberOfItems(inSection: section) > 0 {
-                collectionView.mj_footer.isHidden = false
-                break
-            }
-        }
     }
 }
 
@@ -78,5 +91,17 @@ extension NJRefreshCollectionViewController {
         var contentInset = scrollView.contentInset
         contentInset.bottom -= scrollView.mj_footer.frame.size.height
         scrollView.scrollIndicatorInsets = contentInset
+    }
+}
+
+class NJCollectionView: UICollectionView {
+    override func reloadData() {
+        super.reloadData()
+        for section in 0..<self.numberOfSections {
+            if self.numberOfItems(inSection: section) > 0 {
+                self.mj_footer.isHidden = false
+                break
+            }
+        }
     }
 }
