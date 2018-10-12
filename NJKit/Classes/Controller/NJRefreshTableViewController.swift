@@ -98,7 +98,7 @@ class NJTableView: UITableView {
         super.reloadData()
         for section in 0..<self.numberOfSections {
             if self.numberOfRows(inSection: section) > 0 {
-                self.mj_footer.isHidden = false
+                self.mj_footer?.isHidden = false
                 break
             }
         }
