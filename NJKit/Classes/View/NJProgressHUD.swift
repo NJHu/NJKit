@@ -8,7 +8,7 @@
 import UIKit
 
 private class NJCoverView: UIView {
-    private var activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+    private var activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

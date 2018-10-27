@@ -23,8 +23,8 @@ open class NJWebViewController: NJViewController {
     public var isAutoChangeTitle: Bool = true
     public var webView: WKWebView!
     public var html: String? = nil
-    private lazy var closeBtn: UIButton = UIButton(type: UIButtonType.custom)
-    private lazy var backBtn: UIButton = UIButton(type: UIButtonType.custom)
+    private lazy var closeBtn: UIButton = UIButton(type: UIButton.ButtonType.custom)
+    private lazy var backBtn: UIButton = UIButton(type: UIButton.ButtonType.custom)
     private lazy var progressView: UIProgressView = UIProgressView()
     public var gotoUrl: String? {
         didSet {
@@ -52,7 +52,7 @@ open class NJWebViewController: NJViewController {
     }
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.bringSubview(toFront: progressView)
+        view.bringSubviewToFront(progressView)
     }
     deinit {
         if self.isViewLoaded {
@@ -218,11 +218,11 @@ extension NJWebViewController: WKUIDelegate {
 // MARK:- btns
 extension NJWebViewController {
     private func addActions() {
-        backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJWebViewController.self), for: UIControlState.normal)
-        backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJWebViewController.self), for: UIControlState.highlighted)
-        closeBtn.setTitle("关闭", for: UIControlState.normal)
-        closeBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
-        closeBtn.setTitleColor(UIColor.red, for: UIControlState.highlighted)
+        backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_normal", bundleClass: NJWebViewController.self), for: UIControl.State.normal)
+        backBtn.setImage(UIImage.nj_image(name: "NJKit_navigation_Button_Return_Click", bundleClass: NJWebViewController.self), for: UIControl.State.highlighted)
+        closeBtn.setTitle("关闭", for: UIControl.State.normal)
+        closeBtn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        closeBtn.setTitleColor(UIColor.red, for: UIControl.State.highlighted)
         closeBtn.isHidden = true
         
         let leftView = UIView(frame: CGRect(x: 0, y: nj_navigationBar.frame.size.height - 44.0, width: 90, height: 44))
@@ -231,8 +231,8 @@ extension NJWebViewController {
         backBtn.frame = CGRect(x: 0, y: 0, width: 34.0, height: 44.0)
         closeBtn.frame = CGRect(x: leftView.frame.size.width - 44.0, y: 0, width: 44, height: 44.0)
         nj_navigationBar.addSubview(leftView)
-        backBtn.addTarget(self, action: #selector(btn_back(_:)), for: UIControlEvents.touchUpInside)
-        closeBtn.addTarget(self, action: #selector(btn_close(_:)), for: UIControlEvents.touchUpInside)
+        backBtn.addTarget(self, action: #selector(btn_back(_:)), for: UIControl.Event.touchUpInside)
+        closeBtn.addTarget(self, action: #selector(btn_close(_:)), for: UIControl.Event.touchUpInside)
     }
     @objc private func btn_back(_ btn: UIButton) -> Void {
         webViewBackBtnClick(webView!, self, btn)
@@ -266,10 +266,10 @@ extension NJWebViewController: NJWebViewControllerDelegate {
     }
     // 判断两种情况: push 和 present
     public func webViewCloseBtnClick(_ webView: WKWebView, _ controller: NJWebViewController, _ btn: UIButton?) {
-        if (navigationController?.presentedViewController != nil || navigationController?.presentingViewController != nil) && navigationController?.childViewControllers.count == 1 {
+        if (navigationController?.presentedViewController != nil || navigationController?.presentingViewController != nil) && navigationController?.children.count == 1 {
             dismiss(animated: true, completion: nil)
         }else if let navVc = navigationController {
-            if navVc.childViewControllers.count > 1 {
+            if navVc.children.count > 1 {
                 navVc.popViewController(animated: true)
             }
         }else if (presentationController != nil || presentedViewController != nil) {

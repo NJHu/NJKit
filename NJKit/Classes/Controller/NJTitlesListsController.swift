@@ -44,7 +44,7 @@ open class NJTitlesListsController: NJViewController, NJTitlesListsControllerPro
         nj_setup2ScrollViews()
         
         nj_addChildControllers()
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * CGFloat(self.childViewControllers.count), height: 1.0);
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * CGFloat(self.children.count), height: 1.0);
         
         nj_addBtns()
         
@@ -90,10 +90,10 @@ open class NJTitlesListsController: NJViewController, NJTitlesListsControllerPro
     
     private func nj_addBtns() {
         
-        for vc in self.childViewControllers {
-            let btn = UIButton(type: UIButtonType.custom)
+        for vc in self.children {
+            let btn = UIButton(type: UIButton.ButtonType.custom)
             titleScrollView.addSubview(btn)
-            btn.setTitle(vc.title ?? vc.navigationItem.title, for: UIControlState.normal)
+            btn.setTitle(vc.title ?? vc.navigationItem.title, for: UIControl.State.normal)
             btn.setTitleColor(titleBtnNormalColor, for: .normal)
             btn.setTitleColor(titleBtnSelectedColor, for: .disabled)
             btn.titleLabel?.font = titleBtnFont
@@ -133,7 +133,7 @@ extension NJTitlesListsController {
 extension NJTitlesListsController: UIScrollViewDelegate {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         let index = Int( (scrollView.contentOffset.x / UIScreen.main.bounds.width) + 0.2 )
-        let vc = self.childViewControllers[index]
+        let vc = self.children[index]
         if vc.isViewLoaded {
             vc.viewDidAppear(false)
         }

@@ -17,7 +17,7 @@ open class NJNavigationController: UINavigationController {
 //        getSystemGestureOfBack()
     }
     open  override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        if childViewControllers.count > 0 {
+        if children.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
         }
         super.pushViewController(viewController, animated: animated)
@@ -43,8 +43,8 @@ extension NJNavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIPanGestureRecognizer) -> Bool {
         let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
         print(translation)
-        if let vc = self.childViewControllers.last as? NJNavBarViewController {
-            return (self.childViewControllers.count > 1 && !vc.nj_interactivePopDisabled)
+        if let vc = self.children.last as? NJNavBarViewController {
+            return (self.children.count > 1 && !vc.nj_interactivePopDisabled)
         }else {
             return false
         }

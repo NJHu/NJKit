@@ -34,12 +34,12 @@ public class NJDebugTool: NSObject
     {
         window.isHidden = false
         UIApplication.shared.keyWindow?.addSubview(window)
-        timer.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
+        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
     }
     public func hide()
     {
         window.isHidden = true
-        timer.remove(from: RunLoop.main, forMode: RunLoopMode.commonModes)
+        timer.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
     }
 }
 

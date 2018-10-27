@@ -9,7 +9,7 @@ import UIKit
 
 open class NJStaticTableViewController: NJTableViewController {
     public init() {
-        super.init(tableViewStyle: UITableViewStyle.grouped)
+        super.init(tableViewStyle: UITableView.Style.grouped)
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,7 +41,7 @@ extension NJStaticTableViewController {
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCellSetting")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "UITableViewCellSetting")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "UITableViewCellSetting")
         }
         let item = group.sections[indexPath.section].items[indexPath.row]
         cell!.textLabel?.text = item.title

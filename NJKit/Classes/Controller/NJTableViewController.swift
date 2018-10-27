@@ -11,9 +11,9 @@ import UIKit
 open class NJTableViewController: NJViewController {
     
     @IBOutlet public var tableView: UITableView!
-    private var style: UITableViewStyle = .plain
+    private var style: UITableView.Style = .plain
     
-    public init(tableViewStyle: UITableViewStyle) {
+    public init(tableViewStyle: UITableView.Style) {
         super.init(nibName: nil, bundle: nil)
         style = tableViewStyle;
     }
