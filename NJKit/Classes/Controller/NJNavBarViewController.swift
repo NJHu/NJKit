@@ -8,7 +8,7 @@
 
 import UIKit
 
-open  class NJNavBarViewController: UIViewController {
+open class NJNavBarViewController: UIViewController {
     // 默认可以全局滑动返回
     public var nj_interactivePopDisabled = false
     // 是否需要隐藏返回按钮

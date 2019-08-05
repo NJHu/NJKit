@@ -118,8 +118,20 @@ extension NJNetworkTool {
                 }
             }
             
-        }, usingThreshold: SessionManager.multipartFormDataEncodingMemoryThreshold, to: url, method: HTTPMethod.post, headers: nil) { (result) in
-//            self.wrapper(dataResponse: result, completionHandler: completionHandler)
+        }, usingThreshold: SessionManager.multipartFormDataEncodingMemoryThreshold, to: url, method: HTTPMethod.post, headers: nil) { (response: SessionManager.MultipartFormDataEncodingResult) in
+//            self.wrapper(dataResponse: result., completionHandler: completionHandler)
+            
+            switch response {
+            case .success(let upload, _, _):
+                upload.responseJSON(completionHandler: { (response) in
+                    
+                    self.wrapper(dataResponse: response, completionHandler: completionHandler);
+                })
+                
+            case .failure(let encodingError):
+//                self.wrapper(dataResponse: encodingError, completionHandler: completionHandler);
+                print(encodingError);
+            }
         }
     }
 }

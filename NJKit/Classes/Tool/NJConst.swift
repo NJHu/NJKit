@@ -6,4 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+import AlamofireImage
+import SnapKit
+import SwiftyJSON
 
