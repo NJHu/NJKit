@@ -22,7 +22,7 @@ open class NJRefreshTableViewController: NJTableViewController {
                 strongSelf.refreshing(isMore: true)
             }
         })
-        tableView.mj_header.beginRefreshing()
+        tableView.mj_header?.beginRefreshing()
     }
     open func loadData(isMore: Bool) {
         
@@ -32,40 +32,40 @@ open class NJRefreshTableViewController: NJTableViewController {
 extension NJRefreshTableViewController {
     private func refreshing(isMore: Bool) {
         if isMore {
-            if tableView.mj_header.isRefreshing {
-                if tableView.mj_footer.isRefreshing {
-                    tableView.mj_footer.endRefreshing()
+            if tableView.mj_header?.isRefreshing ?? false {
+                if tableView.mj_footer?.isRefreshing ?? false {
+                    tableView.mj_footer?.endRefreshing()
                 }
                 return
             }
             
-            if tableView.mj_footer.isHidden {
-                if tableView.mj_footer.isRefreshing {
-                    tableView.mj_footer.endRefreshing()
+            if tableView.mj_footer?.isHidden ?? false {
+                if tableView.mj_footer?.isRefreshing ?? false {
+                    tableView.mj_footer?.endRefreshing()
                 }
                 return;
             }
             
-            tableView.mj_header.isHidden = true
-            tableView.mj_footer.isHidden = false
+            tableView.mj_header?.isHidden = true
+            tableView.mj_footer?.isHidden = false
             
         } else {
-            if tableView.mj_footer.isRefreshing {
-                if tableView.mj_header.isRefreshing {
-                    tableView.mj_header.endRefreshing()
+            if tableView.mj_footer?.isRefreshing ?? false {
+                if tableView.mj_header?.isRefreshing ?? false {
+                    tableView.mj_header?.endRefreshing()
                 }
                 return
             }
             
-            if tableView.mj_header.isHidden {
-                if tableView.mj_header.isRefreshing {
-                    tableView.mj_header.endRefreshing()
+            if tableView.mj_header?.isHidden ?? false {
+                if tableView.mj_header?.isRefreshing ?? false {
+                    tableView.mj_header?.endRefreshing()
                 }
                 return;
             }
             
-            tableView.mj_header.isHidden = false
-            tableView.mj_footer.isHidden = true
+            tableView.mj_header?.isHidden = false
+            tableView.mj_footer?.isHidden = true
         }
         self.loadData(isMore: isMore)
     }
@@ -74,13 +74,13 @@ extension NJRefreshTableViewController {
 extension NJRefreshTableViewController {
     // 子类需要调用调用
     public func endHeaderFooterRefreshing() {
-        if tableView.mj_header.isRefreshing {
-            tableView.mj_header.endRefreshing()
+        if tableView.mj_header?.isRefreshing ?? false {
+            tableView.mj_header?.endRefreshing()
         }
-        if tableView.mj_footer.isRefreshing {
-            tableView.mj_footer.endRefreshing()
+        if tableView.mj_footer?.isRefreshing ?? false {
+            tableView.mj_footer?.endRefreshing()
         }
-        tableView.mj_header.isHidden = false
+        tableView.mj_header?.isHidden = false
     }
 }
 
@@ -88,7 +88,7 @@ extension NJRefreshTableViewController {
     open override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         super.scrollViewWillBeginDragging(scrollView)
         var contentInset = scrollView.contentInset
-        contentInset.bottom -= scrollView.mj_footer.frame.size.height
+        contentInset.bottom -= scrollView.mj_footer?.frame.size.height ?? 0
         scrollView.scrollIndicatorInsets = contentInset
     }
 }

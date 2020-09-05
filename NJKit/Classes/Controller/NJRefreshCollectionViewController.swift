@@ -22,7 +22,7 @@ open class NJRefreshCollectionViewController: NJCollectionViewController {
                 strongSelf.refreshing(isMore: true)
             }
         })
-        collectionView.mj_header.beginRefreshing()
+        collectionView.mj_header?.beginRefreshing()
     }
     open func loadData(isMore: Bool) {
         
@@ -32,40 +32,40 @@ open class NJRefreshCollectionViewController: NJCollectionViewController {
 extension NJRefreshCollectionViewController {
     private func refreshing(isMore: Bool) {
         if isMore {
-            if collectionView.mj_header.isRefreshing {
-                if collectionView.mj_footer.isRefreshing {
-                    collectionView.mj_footer.endRefreshing()
+            if collectionView.mj_header?.isRefreshing ?? false {
+                if collectionView.mj_footer?.isRefreshing ?? false {
+                    collectionView.mj_footer?.endRefreshing()
                 }
                 return
             }
             
-            if collectionView.mj_footer.isHidden {
-                if collectionView.mj_footer.isRefreshing {
-                    collectionView.mj_footer.endRefreshing()
+            if collectionView.mj_footer?.isHidden ?? false {
+                if collectionView.mj_footer?.isRefreshing ?? false {
+                    collectionView.mj_footer?.endRefreshing()
                 }
                 return;
             }
             
-            collectionView.mj_header.isHidden = true
-            collectionView.mj_footer.isHidden = false
+            collectionView.mj_header?.isHidden = true
+            collectionView.mj_footer?.isHidden = false
             
         } else {
-            if collectionView.mj_footer.isRefreshing {
-                if collectionView.mj_header.isRefreshing {
-                    collectionView.mj_header.endRefreshing()
+            if collectionView.mj_footer?.isRefreshing ?? false {
+                if collectionView.mj_header?.isRefreshing ?? false {
+                    collectionView.mj_header?.endRefreshing()
                 }
                 return
             }
             
-            if collectionView.mj_header.isHidden {
-                if collectionView.mj_header.isRefreshing {
-                    collectionView.mj_header.endRefreshing()
+            if collectionView.mj_header?.isHidden ?? false {
+                if collectionView.mj_header?.isRefreshing ?? false {
+                    collectionView.mj_header?.endRefreshing()
                 }
                 return;
             }
             
-            collectionView.mj_header.isHidden = false
-            collectionView.mj_footer.isHidden = true
+            collectionView.mj_header?.isHidden = false
+            collectionView.mj_footer?.isHidden = true
         }
         self.loadData(isMore: isMore)
     }
@@ -75,13 +75,13 @@ extension NJRefreshCollectionViewController {
 extension NJRefreshCollectionViewController {
     // 子类需要调用调用
     public func endHeaderFooterRefreshing() {
-        if collectionView.mj_header.isRefreshing {
-            collectionView.mj_header.endRefreshing()
+        if collectionView.mj_header?.isRefreshing ?? false{
+            collectionView.mj_header?.endRefreshing()
         }
-        if collectionView.mj_footer.isRefreshing {
-            collectionView.mj_footer.endRefreshing()
+        if collectionView.mj_footer?.isRefreshing ?? false {
+            collectionView.mj_footer?.endRefreshing()
         }
-        collectionView.mj_header.isHidden = false
+        collectionView.mj_header?.isHidden = false
     }
 }
 
@@ -89,7 +89,7 @@ extension NJRefreshCollectionViewController {
     open override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         super.scrollViewWillBeginDragging(scrollView)
         var contentInset = scrollView.contentInset
-        contentInset.bottom -= scrollView.mj_footer.frame.size.height
+        contentInset.bottom -= scrollView.mj_footer?.frame.size.height ?? 0
         scrollView.scrollIndicatorInsets = contentInset
     }
 }
